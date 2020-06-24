@@ -34,7 +34,7 @@ public class BoardDAO {
 		}
 	}
 	
-	public static List<BoardVO> selectBoardList() {
+	public static List<BoardVO> selectBoardList() { //0~100
 		List<BoardVO> list = new ArrayList();
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -67,8 +67,13 @@ public class BoardDAO {
 		return list;
 	}
 	
-	public static BoardVO selectBoard() {
+	public static BoardVO selectBoard() { //0~1
 		BoardVO vo = new BoardVO();
+		
+		vo.setBid(0);
+		vo.setTitle("");
+		vo.setCtnt("");
+		vo.setR_dt("");
 		
 		return vo;
 	}

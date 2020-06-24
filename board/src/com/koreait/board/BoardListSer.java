@@ -25,6 +25,8 @@ public class BoardListSer extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/boardList.jsp");
 		rd.forward(request, response);
 	}
+	
+	
 }
 
 
