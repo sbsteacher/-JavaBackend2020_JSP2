@@ -1,6 +1,7 @@
 package com.koreait.board;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +18,9 @@ public class BoardListSer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<BoardVO> list = BoardDAO.selectBoardList();
+		request.setAttribute("data", list);		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/boardList.jsp");
 		rd.forward(request, response);
