@@ -40,7 +40,7 @@ public class BoardDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = " SELECT bid, title, r_dt FROM t_board ORDER BY bid DESC ";
+		String sql = " SELECT title, bid, r_dt FROM t_board ORDER BY bid DESC ";
 		
 		try {
 			con = DbCon.getCon();
