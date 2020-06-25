@@ -8,7 +8,12 @@
 </head>
 <body>
 	<div>
-		<a href="boardDel<button>삭제</button>
+		<a href="/boardDel?bid=${data.bid}">
+			<button>삭제</button>
+		</a>
+		<a href="/boardMod?bid=${data.bid}">
+			<button>수정</button>
+		</a>
 	</div>
 	<div>
 		${data.bid}, ${data.title}, ${data.ctnt}, ${data.r_dt}

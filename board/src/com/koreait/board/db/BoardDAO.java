@@ -99,8 +99,51 @@ public class BoardDAO {
 			DbCon.close(con, ps, rs);
 		}
 		
-	
 		return vo;
+	}
+	
+	public static void updateBoard(BoardVO param) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String sql = " UPDATE t_board"
+				+ " SET title = ? "
+				+ " , ctnt = ? "
+				+ " WHERE bid = ? ";
+		
+		try {
+			con = DbCon.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setNString(1,  param.getTitle());
+			ps.setNString(2, param.getCtnt());
+			ps.setInt(3, param.getBid());
+			ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbCon.close(con,  ps);;
+		}
+	}
+	
+	
+	public static void deleteBoard(int bid) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String sql = " DELETE FROM t_board WHERE bid = ? ";
+		
+		try {
+			con = DbCon.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, bid);
+			ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbCon.close(con,  ps);;
+		}
 	}
 }
 
