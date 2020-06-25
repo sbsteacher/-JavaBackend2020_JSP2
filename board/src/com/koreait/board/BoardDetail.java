@@ -25,7 +25,8 @@ public class BoardDetail extends HttpServlet {
 		BoardVO data = BoardDAO.selectBoard(vo);
 		request.setAttribute("data", data);
 		
-		request.getRequestDispatcher("/WEB-INF/jsp/boardDetail.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/boardDetail.jsp")
+		.forward(request, response);
 	}
 
 

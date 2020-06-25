@@ -7,6 +7,11 @@
 <title>디테일</title>
 </head>
 <body>
-	디테일
+	<div>
+		<a href="boardDel<button>삭제</button>
+	</div>
+	<div>
+		${data.bid}, ${data.title}, ${data.ctnt}, ${data.r_dt}
+	</div>
 </body>
 </html>

@@ -67,14 +67,39 @@ public class BoardDAO {
 		return list;
 	}
 	
-	public static BoardVO selectBoard() { //0~1
-		BoardVO vo = new BoardVO();
+	public static BoardVO selectBoard(BoardVO param) { //0~1
+		BoardVO vo = null;
 		
-		vo.setBid(0);
-		vo.setTitle("");
-		vo.setCtnt("");
-		vo.setR_dt("");
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		
+		String sql = " SELECT title, ctnt "
+				+ " , TO_CHAR(r_dt ,'yyyy.mm.dd') as r_dt "
+				+ " FROM t_board "
+				+ " WHERE bid = ? ";
+		
+		try {
+			con = DbCon.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, param.getBid());
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				vo = new BoardVO();
+				vo.setBid(param.getBid());
+				vo.setTitle(rs.getNString("title"));
+				vo.setCtnt(rs.getNString("ctnt"));
+				vo.setR_dt(rs.getNString("r_dt"));				
+			}
+			
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			DbCon.close(con, ps, rs);
+		}
+		
+	
 		return vo;
 	}
 }
